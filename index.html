@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>図面・パース外注サービス｜外構業者様向け</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #111111;
+      --dark: #222222;
+      --mid: #444444;
+      --light: #888888;
+      --border: #dddddd;
+      --bg: #ffffff;
+      --bg-soft: #f7f7f5;
+      --accent: #1a1a1a;
+      --gold: #c8a96e;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--black);
+    }
+
+    .header-cta {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--black);
+      text-decoration: none;
+      border: 1px solid var(--black);
+      padding: 8px 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .header-cta:hover {
+      background: var(--black);
+      color: #fff;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 79px,
+          rgba(255,255,255,0.025) 79px,
+          rgba(255,255,255,0.025) 80px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 79px,
+          rgba(255,255,255,0.025) 79px,
+          rgba(255,255,255,0.025) 80px
+        );
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      margin-bottom: 32px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 300;
+      color: #ffffff;
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+      margin-bottom: 28px;
+    }
+
+    .hero p {
+      font-size: clamp(14px, 2vw, 17px);
+      color: rgba(255,255,255,0.6);
+      line-height: 2;
+      margin-bottom: 48px;
+      white-space: pre-line;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: #ffffff;
+      color: var(--black);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      padding: 18px 48px;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-scroll span {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section {
+      padding: 96px 24px;
+    }
+
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(24px, 3.5vw, 38px);
+      font-weight: 300;
+      color: var(--black);
+      letter-spacing: 0.05em;
+      margin-bottom: 56px;
+      line-height: 1.5;
+    }
+
+    .section-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 16px 0 56px;
+    }
+
+    /* ─── CASES ─── */
+    .cases {
+      background: var(--bg-soft);
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .case-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .case-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%);
+      transition: filter 0.3s, transform 0.4s;
+    }
+
+    .case-card:hover .case-img {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+    }
+
+    .case-card-img-wrap {
+      overflow: hidden;
+    }
+
+    .case-body {
+      padding: 20px 22px 24px;
+    }
+
+    .case-tag {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .case-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* ─── STRENGTHS ─── */
+    .strengths-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .strengths-list li {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      align-items: start;
+      gap: 24px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .strengths-list li:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .strength-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    .strength-content strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--black);
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .strength-content p {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.9;
+    }
+
+    /* ─── CTA ─── */
+    .cta {
+      background: var(--black);
+      text-align: center;
+    }
+
+    .cta .section-label {
+      color: var(--gold);
+    }
+
+    .cta .section-title {
+      color: #ffffff;
+      margin-bottom: 40px;
+    }
+
+    .cta p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 48px;
+      line-height: 2;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      padding: 18px 52px;
+      border: 1px solid rgba(255,255,255,0.5);
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: #fff;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0a0a0a;
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      header {
+        padding: 16px 20px;
+      }
+
+      .logo {
+        font-size: 12px;
+      }
+
+      section {
+        padding: 72px 20px;
+      }
+
+      .cases-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .strengths-list li {
+        grid-template-columns: 36px 1fr;
+        gap: 16px;
+        padding: 28px 0;
+      }
+
+      .strength-num {
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-cta {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">外構図面・パース外注サービス</div>
+    <a href="#" class="header-cta">無料相談する</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <span class="hero-label">Exterior Construction Drawing Service</span>
+      <h1>図面作成・パース<br>外注しませんか？</h1>
+      <p>外構業者様向けに<br>CAD図面・パース作成を外注対応しています</p>
+      <a href="#" class="btn-primary">図面作成を無料で相談する</a>
+    </div>
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="cases" id="cases">
+    <div class="section-inner">
+      <span class="section-label">Works</span>
+      <h2 class="section-title">図面・パース制作事例</h2>
+      <div class="cases-grid">
+
+        <div class="case-card">
+          <div class="case-card-img-wrap">
+            <img
+              class="case-img"
+              src="https://picsum.photos/seed/gaiko1/600/450"
+              alt="外構図面パース カーポート＋土間コンクリート"
+            >
+          </div>
+          <div class="case-body">
+            <span class="case-tag">CASE 01</span>
+            <p class="case-title">外構図面パース<br>カーポート＋土間コンクリート</p>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card-img-wrap">
+            <img
+              class="case-img"
+              src="https://picsum.photos/seed/gaiko2/600/450"
+              alt="外構図面パース アプローチ＋門柱"
+            >
+          </div>
+          <div class="case-body">
+            <span class="case-tag">CASE 02</span>
+            <p class="case-title">外構図面パース<br>アプローチ＋門柱</p>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card-img-wrap">
+            <img
+              class="case-img"
+              src="https://picsum.photos/seed/gaiko3/600/450"
+              alt="外構図面パース 駐車場＋フェンス"
+            >
+          </div>
+          <div class="case-body">
+            <span class="case-tag">CASE 03</span>
+            <p class="case-title">外構図面パース<br>駐車場＋フェンス</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTHS -->
+  <section class="strengths" id="strengths">
+    <div class="section-inner">
+      <span class="section-label">Why Choose Us</span>
+      <h2 class="section-title">選ばれる理由</h2>
+      <ul class="strengths-list">
+        <li>
+          <span class="strength-num">01</span>
+          <div class="strength-content">
+            <strong>外構現場経験を踏まえた図面作成</strong>
+            <p>実際の施工現場を知るからこそ、職人が使いやすく、お客様に伝わりやすい図面をつくることができます。現場目線の精度で、打ち合わせの質を高めます。</p>
+          </div>
+        </li>
+        <li>
+          <span class="strength-num">02</span>
+          <div class="strength-content">
+            <strong>伝わりやすいパース表現</strong>
+            <p>完成形のイメージをリアルに再現するパース作成で、お客様の不安を払拭し、受注率の向上をサポートします。素材・質感の表現にもこだわります。</p>
+          </div>
+        </li>
+        <li>
+          <span class="strength-num">03</span>
+          <div class="strength-content">
+            <strong>修正相談にも柔軟に対応</strong>
+            <p>「ここだけ変えたい」「お客様の要望が変わった」など、都度のご要望に丁寧に対応します。業者様のパートナーとして、スムーズな連携を心がけています。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="section-inner">
+      <span class="section-label">Contact</span>
+      <h2 class="section-title">まずはお気軽に<br>ご相談ください</h2>
+      <p>図面の内容・ご予算・納期など、どんなことでもご相談いただけます。<br>まずはお気軽にお問い合わせください。</p>
+      <a href="#" class="btn-secondary">無料で相談する</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 外構図面・パース外注サービス. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
