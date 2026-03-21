@@ -15,13 +15,20 @@
 .logo{
   display:flex;
   align-items:center;
-  padding:2px 8px;
+  gap:10px;
+  padding:0 8px;
 }
 
 .logo img{
-  height:60px;
+  height:52px;
   width:auto;
-  display:block;
+}
+
+.logo-copy{
+  font-size:13px;
+  color:#444;
+  letter-spacing:0.5px;
+  white-space:nowrap;
 }
 
 header{
@@ -34,7 +41,9 @@ header{
   padding:0;
   border-bottom:1px solid #eee;
 }
-    
+    body{
+  padding-top:70px;
+}
     :root {
       --black: #111111;
       --dark: #222222;
@@ -440,6 +449,7 @@ header{
   <header>
     <div class="logo">
   <img src="orca_logo.png" alt="ORCA設計事務所">
+  <div class="logo-copy">外構業者様のための図面・パース制作</div>
 </div>
     <a href="tel:09012345678" class="header-cta">📞 電話相談</a>
   </header>
